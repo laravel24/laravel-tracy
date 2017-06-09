@@ -23,7 +23,8 @@ class RenderBarTest extends TestCase
         $renderBar = new RenderBar(
             $debuggerManager = m::mock('Recca0120\LaravelTracy\DebuggerManager'),
             $events = m::mock('Illuminate\Contracts\Events\Dispatcher'),
-            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory')
+            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory'),
+            $sessionManager = m::mock('Illuminate\Session\SessionManager')
         );
 
         $request = m::mock('Illuminate\Http\Request');
@@ -33,6 +34,8 @@ class RenderBarTest extends TestCase
 
             return $response;
         };
+
+        $sessionManager->shouldReceive('keep')->once()->withNoArgs();
 
         $request->shouldReceive('has')->once()->with('_tracy_bar')->andReturn(true);
         $request->shouldReceive('get')->once()->with('_tracy_bar')->andReturn('assets');
@@ -61,7 +64,8 @@ class RenderBarTest extends TestCase
         $renderBar = new RenderBar(
             $debuggerManager = m::mock('Recca0120\LaravelTracy\DebuggerManager'),
             $events = m::mock('Illuminate\Contracts\Events\Dispatcher'),
-            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory')
+            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory'),
+            $sessionManager = m::mock('Illuminate\Session\SessionManager')
         );
 
         $request = m::mock('Illuminate\Http\Request');
@@ -82,7 +86,8 @@ class RenderBarTest extends TestCase
         $renderBar = new RenderBar(
             $debuggerManager = m::mock('Recca0120\LaravelTracy\DebuggerManager'),
             $events = m::mock('Illuminate\Contracts\Events\Dispatcher'),
-            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory')
+            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory'),
+            $sessionManager = m::mock('Illuminate\Session\SessionManager')
         );
 
         $request = m::mock('Illuminate\Http\Request');
@@ -103,7 +108,8 @@ class RenderBarTest extends TestCase
         $renderBar = new RenderBar(
             $debuggerManager = m::mock('Recca0120\LaravelTracy\DebuggerManager'),
             $events = m::mock('Illuminate\Contracts\Events\Dispatcher'),
-            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory')
+            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory'),
+            $sessionManager = m::mock('Illuminate\Session\SessionManager')
         );
 
         $request = m::mock('Illuminate\Http\Request');
@@ -124,7 +130,8 @@ class RenderBarTest extends TestCase
         $renderBar = new RenderBar(
             $debuggerManager = m::mock('Recca0120\LaravelTracy\DebuggerManager'),
             $events = m::mock('Illuminate\Contracts\Events\Dispatcher'),
-            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory')
+            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory'),
+            $sessionManager = m::mock('Illuminate\Session\SessionManager')
         );
 
         $request = m::mock('Illuminate\Http\Request');
@@ -145,7 +152,8 @@ class RenderBarTest extends TestCase
         $renderBar = new RenderBar(
             $debuggerManager = m::mock('Recca0120\LaravelTracy\DebuggerManager'),
             $events = m::mock('Illuminate\Contracts\Events\Dispatcher'),
-            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory')
+            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory'),
+            $sessionManager = m::mock('Illuminate\Session\SessionManager')
         );
 
         $request = m::mock('Illuminate\Http\Request');
@@ -171,7 +179,8 @@ class RenderBarTest extends TestCase
         $renderBar = new RenderBar(
             $debuggerManager = m::mock('Recca0120\LaravelTracy\DebuggerManager'),
             $events = m::mock('Illuminate\Contracts\Events\Dispatcher'),
-            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory')
+            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory'),
+            $sessionManager = m::mock('Illuminate\Session\SessionManager')
         );
 
         $request = m::mock('Illuminate\Http\Request');
@@ -200,7 +209,8 @@ class RenderBarTest extends TestCase
         $renderBar = new RenderBar(
             $debuggerManager = m::mock('Recca0120\LaravelTracy\DebuggerManager'),
             $events = m::mock('Illuminate\Contracts\Events\Dispatcher'),
-            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory')
+            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory'),
+            $sessionManager = m::mock('Illuminate\Session\SessionManager')
         );
 
         $request = m::mock('Illuminate\Http\Request');
@@ -233,7 +243,8 @@ class RenderBarTest extends TestCase
         $renderBar = new RenderBar(
             $debuggerManager = m::mock('Recca0120\LaravelTracy\DebuggerManager'),
             $events = m::mock('Illuminate\Contracts\Events\Dispatcher'),
-            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory')
+            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory'),
+            $sessionManager = m::mock('Illuminate\Session\SessionManager')
         );
 
         $request = m::mock('Illuminate\Http\Request');
@@ -266,7 +277,8 @@ class RenderBarTest extends TestCase
         $renderBar = new RenderBar(
             $debuggerManager = m::mock('Recca0120\LaravelTracy\DebuggerManager'),
             $events = m::mock('Illuminate\Contracts\Events\Dispatcher'),
-            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory')
+            $responseFactory = m::mock('Illuminate\Contracts\Routing\ResponseFactory'),
+            $sessionManager = m::mock('Illuminate\Session\SessionManager')
         );
 
         $request = m::mock('Illuminate\Http\Request');

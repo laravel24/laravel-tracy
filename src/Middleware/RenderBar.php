@@ -3,6 +3,7 @@
 namespace Recca0120\LaravelTracy\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Session\SessionManager;
 use Illuminate\Contracts\Events\Dispatcher;
 use Recca0120\LaravelTracy\DebuggerManager;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,18 +37,31 @@ class RenderBar
     protected $responseFactory;
 
     /**
+     * $sessionManager.
+     *
+     * @var \Illuminate\Session\SessionManager
+     */
+    protected $sessionManager;
+
+    /**
      * __construct.
      *
      *
      * @param \Recca0120\LaravelTracy\DebuggerManager $debuggerManager
      * @param \Illuminate\Contracts\Events\Dispatcher $events
      * @param \Illuminate\Contracts\Routing\ResponseFactory $responseFactory
+     * @param \Illuminate\Session\SessionManager $sessionManager
      */
-    public function __construct(DebuggerManager $debuggerManager, Dispatcher $events, ResponseFactory $responseFactory)
-    {
+    public function __construct(
+        DebuggerManager $debuggerManager,
+        Dispatcher $events,
+        ResponseFactory $responseFactory,
+        SessionManager $sessionManager
+    ) {
         $this->debuggerManager = $debuggerManager;
         $this->events = $events;
         $this->responseFactory = $responseFactory;
+        $this->sessionManager = $sessionManager;
     }
 
     /**
@@ -62,6 +76,8 @@ class RenderBar
     public function handle($request, $next)
     {
         if ($request->has('_tracy_bar') === true) {
+            $this->sessionManager->keep();
+
             return $this->responseFactory->stream(function () use ($request) {
                 list($headers, $content) = $this->debuggerManager->dispatchAssets($request->get('_tracy_bar'));
                 if (headers_sent() === false) {
@@ -96,7 +112,7 @@ class RenderBar
      * shouldNotRenderBar.
      *
      * @param \Symfony\Component\HttpFoundation\Response $response
-     * @param \Illuminte\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      *
      * @return bool
      */
